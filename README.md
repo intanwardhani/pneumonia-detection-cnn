@@ -1,4 +1,4 @@
-# Distinguishing Healhty and Pneumonic Lungs
+# Distinguishing Pneumonic From Healthy Lungs
 
 In this project, we built a deep-learning system to assist medical professional in distinguishing healthy lungs from lungs infected with pneumonia. 
 
