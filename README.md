@@ -9,6 +9,15 @@ In this project, we built a deep-learning system to assist medical professional 
 
 
 # Usage
+1. Set the environment variable before running any scripts in the terminal of the project root:
+```bash
+export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+```
+
+2. Redistribute dataset to achieve balanced data counts for each split while preserving as much original data as possible. Run the following command in the terminal of the project root:
+```bash
+python src/data/redistribute_data.py --model_type resnet18
+```
 
 # Project Structure
 ```
