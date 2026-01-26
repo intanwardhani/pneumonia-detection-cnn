@@ -8,6 +8,7 @@ class Config:
     # Project paths
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
     DATA_DIR = os.path.join(PROJECT_ROOT, "data", "raw", "chest_xray")
+    DATA_REDIST_DIR = os.path.join(PROJECT_ROOT, "data", "raw", "redistributed")
     OUTPUT_DIR = os.path.join(PROJECT_ROOT, "outputs")
     MODELS_DIR = os.path.join(OUTPUT_DIR, "models")
     LOGS_DIR = os.path.join(OUTPUT_DIR, "logs")
@@ -15,7 +16,7 @@ class Config:
     
     # Model configuration
     MODEL_NAME = "resnet18"
-    NUM_CLASSES = 2  # NORMAL and PNEUMONIA
+    NUM_CLASSES = 3  # NORMAL, BACTERIA, VIRAL
     FREEZE_BASE = True
     PRETRAINED = True
     
@@ -23,8 +24,10 @@ class Config:
     IMAGE_SIZE = (224, 224)
     BATCH_SIZE = 32
     NUM_WORKERS = 4
+    NUM_BATCH_DISPLAY = 16
     USE_MEDICAL_TRANSFORMS = True
-    CLASS_NAMES = ['NORMAL', 'PNEUMONIA']
+    CLASS_NAMES = ['NORMAL', 'BACTERIA', 'VIRAL']
+    SPLIT_NAMES = ['train', 'val', 'test']
     
     # Training configuration
     NUM_EPOCHS = 10
