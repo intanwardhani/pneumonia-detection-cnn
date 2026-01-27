@@ -58,7 +58,7 @@ Receiver operating characteristic (ROC) curve: a graphical representation of a c
 ![ROC](outputs/results/plots/roc_curve.png)
 
 Confusion matrix: what the model predicts vs. what is true and how often it is correct/incorrect
-![Confusion matrix](outputs/results/plots/confusion_matrix.pngoutputs/results/plots/confusion_matrix.png)
+![Confusion matrix](outputs/results/plots/confusion_matrix.png)
 
 # Usage
 
