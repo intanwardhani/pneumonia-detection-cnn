@@ -1,0 +1,58 @@
+TRAINING METRICS SUMMARY
+==================================================
+
+Best Validation Accuracy: 82.2000 (Epoch 8)
+Final Validation Accuracy: 79.0000
+Total Training Epochs: 10
+
+DETAILED EPOCH METRICS:
+------------------------------
+
+Epoch 1:
+  Train - Loss: 0.7444, Acc: 67.2000
+  Val   - Loss: 0.4993, Acc: 81.8000
+
+Epoch 2:
+  Train - Loss: 0.6043, Acc: 74.3111
+  Val   - Loss: 0.5476, Acc: 77.2000
+
+Epoch 3:
+  Train - Loss: 0.6453, Acc: 72.2667
+  Val   - Loss: 0.4686, Acc: 80.6000
+
+Epoch 4:
+  Train - Loss: 0.5502, Acc: 77.2000
+  Val   - Loss: 0.4731, Acc: 81.0000
+
+Epoch 5:
+  Train - Loss: 0.5584, Acc: 76.5333
+  Val   - Loss: 0.4708, Acc: 80.8000
+
+Epoch 6:
+  Train - Loss: 0.5826, Acc: 75.1111
+  Val   - Loss: 0.5471, Acc: 79.4000
+
+Epoch 7:
+  Train - Loss: 0.5541, Acc: 78.0444
+  Val   - Loss: 0.5107, Acc: 78.4000
+
+Epoch 8:
+  Train - Loss: 0.5351, Acc: 78.8000
+  Val   - Loss: 0.4604, Acc: 82.2000
+
+Epoch 9:
+  Train - Loss: 0.5243, Acc: 77.6444
+  Val   - Loss: 0.4561, Acc: 81.2000
+
+Epoch 10:
+  Train - Loss: 0.5080, Acc: 79.4667
+  Val   - Loss: 0.4739, Acc: 79.0000
+
+FINAL VALIDATION METRICS:
+------------------------------
+avg_loss: 0.47389250225387514
+accuracy: 79.0
+f1: 0.79
+precision: 0.79
+recall: 0.79
+epoch: 10

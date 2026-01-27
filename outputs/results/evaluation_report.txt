@@ -1,0 +1,37 @@
+COMPREHENSIVE MODEL EVALUATION REPORT
+============================================================
+
+Model Architecture: ResNet18
+Number of Classes: 3
+Classes: NORMAL, BACTERIA, VIRAL
+
+OVERALL PERFORMANCE METRICS:
+------------------------------
+Accuracy: 0.8120
+Precision (Macro): 0.7848
+Recall (Macro): 0.7967
+F1 Score (Macro): 0.7881
+ROC AUC (Macro): 0.9334
+
+PER-CLASS PERFORMANCE:
+------------------------------
+
+NORMAL:
+  precision: 0.8990
+  recall: 0.9350
+  f1: 0.9167
+  support: 200.0000
+
+BACTERIA:
+  precision: 0.8400
+  recall: 0.7350
+  f1: 0.7840
+  support: 200.0000
+
+VIRAL:
+  precision: 0.6154
+  recall: 0.7200
+  f1: 0.6636
+  support: 100.0000
+
+Total samples evaluated: 0

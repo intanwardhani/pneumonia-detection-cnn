@@ -1,0 +1,42 @@
+PREDICTIONS ANALYSIS
+========================================
+
+Total predictions: 500
+Correct predictions: 406 (81.2%)
+Incorrect predictions: 94 (18.8%)
+
+ERROR ANALYSIS:
+--------------------
+
+Most common errors:
+  BACTERIA → VIRAL: 38 times
+  VIRAL → BACTERIA: 22 times
+  BACTERIA → NORMAL: 15 times
+  NORMAL → VIRAL: 7 times
+  NORMAL → BACTERIA: 6 times
+  VIRAL → NORMAL: 6 times
+
+Average confidence for correct predictions: 0.828
+Average confidence for incorrect predictions: 0.651
+
+DETAILED ERROR BREAKDOWN:
+-------------------------
+
+Example incorrect predictions:
+  True: NORMAL (label: 0), Predicted: VIRAL (label: 2), Confidence: 0.853
+  True: NORMAL (label: 0), Predicted: BACTERIA (label: 1), Confidence: 0.376
+  True: NORMAL (label: 0), Predicted: VIRAL (label: 2), Confidence: 0.839
+  True: NORMAL (label: 0), Predicted: BACTERIA (label: 1), Confidence: 0.451
+  True: NORMAL (label: 0), Predicted: VIRAL (label: 2), Confidence: 0.871
+
+OVERALL STATISTICS:
+--------------------
+Average confidence: 0.795
+Min confidence: 0.349
+Max confidence: 1.000
+
+PER-CLASS ACCURACY:
+--------------------
+BACTERIA: 0.735 (73.5%)
+NORMAL: 0.935 (93.5%)
+VIRAL: 0.720 (72.0%)

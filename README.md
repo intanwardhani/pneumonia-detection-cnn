@@ -27,15 +27,14 @@ We plotted all the relevant evaluation metrics for our model (confusion matrix, 
 
 # Features
 
+- Pytorch is used as the backbone
 - Mild preprocessing adapted to the nature of the data 
-- Applying resizing, mild denoising, mild CLAHE 
-- Work with keras models 
+- Applying resizing, mild denoising 
+- Work with pytorch resnet18 model 
 - Train the model on a preprocessed training dataset
 - Validate the model on the raw validation dataset  
 - Test the the model on the raw testing dataset 
 - Plot evaluation metrics
-
-
 
 # Dataset
 
@@ -43,20 +42,39 @@ The X-ray dataset was downloaded from Kaggle:
 https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
 
-
 # Data preprocessing
 
-X-rays require mild preprocessing before being used in a Convolutional Neural Network (CNN) primarily
-to standardize variability across different equipment and to enhance diagnostic features that might be subtle in raw digital formats. 
+X-rays require mild preprocessing before being used in a Convolutional Neural Network (CNN) primarily to standardize variability across different equipment and to enhance diagnostic features that might be subtle in raw digital formats.  
+
 Raw X-rays can vary significantly in size (e.g., 3000 x 2000 pixels). CNNs require a fixed input dimension (commonly 224x224 or 512x512) for their fully connected layers. Digital radiography often contains "noise" from scattered radiation or electronic artifacts. Mild filters, such as Median or Gaussian filters, help suppress this without losing critical edge information.Techniques like CLAHE (Contrast Limited Adaptive Histogram Equalization) are frequently used to sharpen local contrast, making fine details like lung nodules or small fractures more visible to the network.
 
 
 # Model evaluation
 
+Training history over 10 epochs
+![Training history](outputs/results/training_history.png)
+
+Receiver operating characteristic (ROC) curve: a graphical representation of a classifier's performance across different thresholds
+![ROC](outputs/results/plots/roc_curve.png)
+
+Confusion matrix: what the model predicts vs. what is true and how often it is correct/incorrect
+![Confusion matrix](outputs/results/plots/confusion_matrix.png)
 
 # Usage
 
+1. Set the environment variable before running any scripts in the terminal of the project root:
+```bash
+export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+```
 
+2. Redistribute dataset to achieve balanced data counts for each split while preserving as much original data as possible. Run the following command in the terminal of the project root:
+```bash
+python src/data/redistribute_data.py --model_type resnet18
+```
+
+3. A new subfolder with the redistributed data should be created.
+
+4. Check the training and evaluation workflow in `notebooks/model_experiments.ipynb`.
 
 # Project Structure
 ```
