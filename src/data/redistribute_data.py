@@ -23,7 +23,7 @@ class DataRedistributor:
         
         counts = defaultdict(lambda: defaultdict(int))
         
-        for split in ['train', 'val', 'test']:
+        for split in config.SPLIT_NAMES:
             split_dir = os.path.join(self.original_dir, split)
             if not os.path.exists(split_dir):
                 continue
@@ -55,7 +55,7 @@ class DataRedistributor:
         
         all_images = defaultdict(list)
         
-        for split in ['train', 'val', 'test']:
+        for split in config.SPLIT_NAMES:
             split_dir = os.path.join(self.original_dir, split)
             if not os.path.exists(split_dir):
                 continue

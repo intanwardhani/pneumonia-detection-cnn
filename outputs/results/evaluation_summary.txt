@@ -1,0 +1,37 @@
+=== MODEL PERFORMANCE SUMMARY ===
+Accuracy: 0.8120
+
+MULTI-CLASS CLASSIFICATION METRICS:
+-----------------------------------
+Precision (Macro): 0.7848
+Recall (Macro): 0.7967
+F1 Score (Macro): 0.7881
+ROC AUC (Macro): 0.9334
+ROC AUC (Weighted): 0.9421
+
+=== PER-CLASS PERFORMANCE ===
+------------------------------
+
+NORMAL:
+  Precision: 0.8990
+  Recall: 0.9350
+  F1 Score: 0.9167
+  Support: 200.0 samples
+
+BACTERIA:
+  Precision: 0.8400
+  Recall: 0.7350
+  F1 Score: 0.7840
+  Support: 200.0 samples
+
+VIRAL:
+  Precision: 0.6154
+  Recall: 0.7200
+  F1 Score: 0.6636
+  Support: 100.0 samples
+
+=== EVALUATION DETAILS ===
+-------------------------
+Total Classes: 3
+Class Names: NORMAL, BACTERIA, VIRAL
+Total Samples: 500

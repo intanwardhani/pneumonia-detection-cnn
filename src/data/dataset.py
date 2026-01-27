@@ -1,14 +1,14 @@
 import os 
 from torch.utils.data import Dataset, DataLoader 
 from PIL import Image 
-from transform import create_data_transforms 
+from .transforms import create_data_transforms 
 from config import Config
 
 config = Config()
 class PneumoniaDataset(Dataset): 
     """Custom dataset for redistributed pneumonia X-ray images with 3-class structure"""
     
-    def __init__(self, data_dir, split_name, transform=None, class_names=None):
+    def __init__(self, data_dir: str, split_name: str, transform=None, class_names=None):
         """
         Args:
             data_dir: Base directory (e.g., 'data/redistributed')
@@ -192,14 +192,94 @@ def verify_dataset_loading(data_dir=config.DATA_REDIST_DIR):
             # Test a sample batch
             if len(dataset) > 0:
                 sample_image, sample_label = dataset[0]
-                print(f"  Sample image shape: {sample_image.shape}")
+                print(f"  Sample image shape: {sample_image.shape}") # type: ignore
                 print(f"  Sample label: {sample_label} ({class_names[sample_label]})")
         
-        print("\n✅ Dataset loading verification complete!")
+        print("Dataset loading verification complete!")
         
     except Exception as e:
-        print(f"❌ Error during verification: {e}")
+        print(f"Error during verification: {e}")
         raise
+    
+def analyse_dataloader_classes(dataloader, class_names, num_batches=5):
+    """Analyse class distribution in dataloader (handles both tensor and int labels)"""
+    
+    class_distribution = {name: 0 for name in class_names}
+    total_samples = 0
+    
+    print("Analysing dataloader class distribution...")
+    print("-" * 50)
+    
+    for batch_idx, (images, labels) in enumerate(dataloader):
+        if batch_idx >= num_batches:
+            break
+            
+        print(f"Batch {batch_idx + 1}:")
+        print(f"  Images: {len(images)}")
+        
+        # Handle different label formats
+        if hasattr(labels, 'numpy'):  # It's a tensor
+            labels_list = labels.cpu().numpy().tolist()
+        else:  # It's already a list/tuple
+            labels_list = list(labels)
+            
+        print(f"  Labels: {labels_list}")
+        
+        for label in labels_list:
+            # Convert to integer if it's still a tensor
+            if hasattr(label, 'item'):  # It's a tensor
+                label_int = label.item()
+            else:
+                label_int = int(label)
+            
+            # Get class name
+            class_name = class_names[label_int]
+            class_distribution[class_name] += 1
+            total_samples += 1
+    
+    print(f"Overall distribution (first {num_batches} batches):")
+    for class_name, count in class_distribution.items():
+        percentage = (count / total_samples) * 100 if total_samples > 0 else 0
+        print(f"  {class_name}: {count} ({percentage:.1f}%)")
+        
+def debug_dataloader_labels(dataloader, num_batches=1):
+    """Debug function to understand label format"""
+    
+    print("Debugging dataloader label format...")
+    print("-" * 40)
+    
+    for batch_idx, (images, labels) in enumerate(dataloader):
+        if batch_idx >= num_batches:
+            break
+            
+        print(f"\nBatch {batch_idx + 1}:")
+        print(f"  Images shape: {images.shape}")
+        print(f"  Labels type: {type(labels)}")
+        print(f"  Labels: {labels}")
+        
+        if hasattr(labels, 'shape'):
+            print(f"  Labels shape: {labels.shape}")
+            print(f"  Labels dtype: {labels.dtype}")
+        
+        # Try different conversion methods
+        try:
+            labels_numpy = labels.numpy()
+            print(f"  Labels as numpy: {labels_numpy}")
+            print(f"  Labels as numpy list: {labels_numpy.tolist()}")
+        except Exception as e:
+            print(f"  Error converting to numpy: {e}")
+        
+        # Check individual labels
+        for i, label in enumerate(labels):
+            print(f"    Label {i}: {type(label)} = {label}")
+            if hasattr(label, 'item'):
+                print(f"      Label {i} as int: {label.item()}")
+            else:
+                print(f"      Label {i} as int: {int(label)}")
+        
+        break  # Only debug first batch
+
+
 
 
     
